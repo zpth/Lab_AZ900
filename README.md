@@ -10,7 +10,7 @@ Este proyecto presenta una topología de infraestructura en Azure diseñada para
 
 # 🧩 Diagrama de arquitectura
 
-![Azure Architecture Diagram](./architecture.png)
+![Azure Architecture Diagram](./diagrams/architecture.png)
 
 > El diagrama muestra el flujo completo desde el usuario hasta la base de datos, incluyendo balanceo de carga y controles de seguridad.
 
