@@ -16,28 +16,38 @@ Este proyecto presenta una topología de infraestructura en Azure diseñada para
 
 ---
 
+## 🏗️ Componentes
 
-## 🏗️ Arquitectura
+### 🔹 Azure Virtual Network (VNet)
+Red privada que conecta todos los recursos de forma segura dentro de Azure.
 
-El despliegue crea los siguientes recursos de forma automatizada:
+### 🔹 Frontend Subnet
+- Contiene las **máquinas virtuales web**
+- Implementa un **Availability Set** para alta disponibilidad
+- Protegida por un **NSG** que permite solo tráfico HTTP (80)
 
-* **Grupo de Recursos:** Contenedor lógico para el ciclo de vida del proyecto.
-* **Red Virtual (VNet):** Segmentación de red con subredes definidas.
-* **Network Security Group (NSG):** Firewall virtual configurado para permitir solo tráfico HTTP (80).
-* **Standard Load Balancer:** Distribuye el tráfico entrante entre las instancias saludables.
-* **Availability Set:** Garantiza que las VMs estén en racks físicos separados (SLA 99.95%).
-* **2x Virtual Machines:** Servidores Ubuntu con Nginx autoconfigurados mediante `cloud-init`.
+### 🔹 Backend Subnet
+- Aloja la **lógica de negocio y base de datos**
+- Aislada de Internet
+- NSG configurado para **denegar tráfico externo**
 
-```mermaid
-graph TD
-    User((Usuario)) -->|HTTP:80| LB[Azure Load Balancer]
-    LB --> VM1[VM Web 01]
-    LB --> VM2[VM Web 02]
-    
-    subgraph "Availability Set"
-    VM1
-    VM2
-    end
+### 🔹 Azure Load Balancer
+- Distribuye el tráfico entrante entre las VMs web
+- Evita sobrecarga y puntos únicos de falla
+
+### 🔹 Public IP
+- Punto de acceso público
+- Asociada únicamente al Load Balancer
+
+### 🔹 Storage Account (Azure Files)
+- Almacenamiento compartido para archivos, recursos y logs
+- Accesible solo desde la VNet
+
+### 🔹 VPN Gateway / Azure Bastion
+- Acceso administrativo seguro
+- Sin exposición de puertos SSH o RDP a Internet
+
+---
     
     VM1 -.-> NSG[Network Security Group]
     VM2 -.-> NSG
