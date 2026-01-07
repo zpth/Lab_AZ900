@@ -52,7 +52,7 @@ Red privada que conecta todos los recursos de forma segura dentro de Azure.
 
 Clonar el repositorio.
 ```bash
-git clone 
+git clone https://github.com/zpth/Lab_AZ900.git
 ```
 
 Ingresar al directorio y dar permisos de ejecución al script:
