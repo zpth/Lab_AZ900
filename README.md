@@ -1,10 +1,21 @@
-# ☁️ Arquitectura de Alta Disponibilidad en Azure
+# ☁️ Arquitectura de alta disponibilidad en Azure
 
 ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Bash](https://img.shields.io/badge/GNU%20Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
 Este proyecto despliega una infraestructura web escalable y resistente en Microsoft Azure utilizando **Infrastructure as Code (IaC)** con Azure CLI. Simula un entorno empresarial donde el servicio debe mantenerse activo incluso si falla un servidor.
+
+Este proyecto presenta una topología de infraestructura en Azure diseñada para alojar aplicaciones web escalables y seguras, simulando un entorno empresarial donde el servicio debe mantenerse activo incluso si falla un servidor, así mismo se limita la exposición a Internet y protege los recursos críticos mediante **Network Security Groups (NSG)**, **subredes dedicadas** y **acceso administrativo seguro**.
+
+# 🧩 Diagrama de arquitectura
+
+![Azure Architecture Diagram](./architecture.png)
+
+> El diagrama muestra el flujo completo desde el usuario hasta la base de datos, incluyendo balanceo de carga y controles de seguridad.
+
+---
+
 
 ## 🏗️ Arquitectura
 
