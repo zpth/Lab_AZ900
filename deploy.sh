@@ -31,7 +31,7 @@ package_upgrade: true
 packages:
   - nginx
 runcmd:
-  - echo "<h1>Servidor Azure: \$(hostname)</h1>" > /var/www/html/index.html
+  - echo "<h1>Servidor Azure: \$(hostname)</h1>" > /usr/share/nginx/html/index.html
   - service nginx restart
 EOF
 
