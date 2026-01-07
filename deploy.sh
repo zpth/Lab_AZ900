@@ -22,7 +22,7 @@ echo "--- 3. Desplegando load balancer ---"
 az network public-ip create --resource-group $RG --name LB-PublicIP --sku Standard
 az network lb create --resource-group $RG --name $LB --sku Standard --public-ip-address LB-PublicIP --frontend-ip-name FrontEndPool --backend-pool-name BackEndPool
 az network lb probe create --resource-group $RG --lb-name $LB --name HttpProbe --protocol Tcp --port 80
-az network lb rule create --resource-group $RG --lb-name $LB --name LBRule --protocol Tcp --frontend-port 80 --backend-port 80 --frontend-ip-name FrontEndPool --backend-pool-name Bac>
+az network lb rule create --resource-group $RG --lb-name $LB --name LBRule --protocol Tcp --frontend-port 80 --backend-port 80 --frontend-ip-name FrontEndPool --backend-pool-name BackEndPool --probe-name HttpProbe 
 
 echo "--- 4. Creando archivo server-init.txt ---"
 cat <<EOF > server-init.txt
