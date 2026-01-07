@@ -48,6 +48,20 @@ Red privada que conecta todos los recursos de forma segura dentro de Azure.
 - Sin exposición de puertos SSH o RDP a Internet
 
 ---
-    
-    VM1 -.-> NSG[Network Security Group]
-    VM2 -.-> NSG
+## 🚀 Despliegue
+
+Clonar el repositorio.
+```bash
+git clone 
+```
+
+Ingresar al directorio y dar permisos de ejecución al script:
+```bash
+cd Lab-AZ900
+chmod +x deploy.sh
+```
+
+Ejecutar el script:
+```bash
+./deploy.sh
+```
