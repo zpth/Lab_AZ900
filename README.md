@@ -65,5 +65,16 @@ Ejecutar el script:
 ```bash
 ./deploy.sh
 ```
+---
+
+## 📸 Prueba de Alta Disponibilidad
+> Se observa cómo la misma IP Pública (del Load Balancer) sirve contenido desde dos instancias diferentes.
+
+![Balanceo de Carga](screenshots/load-balancer.png)
+
+## 📸 Grupo de recursos
+> Recursos creados automáticamente mediante el script de Azure CLI.
+
+![Recursos Azure](screenshots/azure-resource-group.png)
 
 
