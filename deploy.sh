@@ -35,22 +35,49 @@ packages:
 
 runcmd:
   - |
-    cat <<'HTML' > /var/www/html/index.html
+    HOSTNAME=\$(hostname)
+    cat <<HTML > /var/www/html/index.html
     <!DOCTYPE html>
     <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Azure Web</title>
+        <title>Azure Load Balancer</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f3f6f9;
+                text-align: center;
+                padding-top: 80px;
+            }
+            .box {
+                display: inline-block;
+                padding: 30px;
+                border: 2px solid #0078D4;
+                border-radius: 10px;
+                background-color: #ffffff;
+            }
+            h1 {
+                color: #0078D4;
+            }
+            .server {
+                margin-top: 15px;
+                font-size: 20px;
+                font-weight: bold;
+                color: #333333;
+            }
+        </style>
     </head>
     <body>
-        <h1>Servidor Web en Azure</h1>
-        <p>Arquitectura con Load Balancer</p>
-        <p><strong>Hostname:</strong> $(hostname)</p>
+        <div class="box">
+            <h1>Servidor Web en Azure</h1>
+            <div class="server">Estas accediendo al servidor: \$HOSTNAME</div>
+        </div>
     </body>
     </html>
     HTML
   - systemctl restart nginx
 EOF
+
 
 
 echo "--- 5. Desplegando VMs (Esto puede tardar unos minutos) ---"
