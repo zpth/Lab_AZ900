@@ -27,13 +27,31 @@ az network lb rule create --resource-group $RG --lb-name $LB --name LBRule --pro
 echo "--- 4. Creando archivo server-init.txt ---"
 cat <<EOF > server-init.txt
 #cloud-config
+package_update: true
 package_upgrade: true
+
 packages:
   - nginx
+
 runcmd:
-  - echo "<h1>Servidor Azure: \$(hostname)</h1>" > /usr/share/nginx/html/index.html
-  - service nginx restart
+  - |
+    cat <<'HTML' > /var/www/html/index.html
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Azure Web</title>
+    </head>
+    <body>
+        <h1>Servidor Web en Azure</h1>
+        <p>Arquitectura con Load Balancer</p>
+        <p><strong>Hostname:</strong> $(hostname)</p>
+    </body>
+    </html>
+    HTML
+  - systemctl restart nginx
 EOF
+
 
 echo "--- 5. Desplegando VMs (Esto puede tardar unos minutos) ---"
 az vm availability-set create --resource-group $RG --name $AvSet
